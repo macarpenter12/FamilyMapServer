@@ -1,3 +1,5 @@
+package familymap;
+
 public class Event {
     private String eventID;
     private String username;

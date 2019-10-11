@@ -1,3 +1,5 @@
+package familymap;
+
 public class Person {
     private String personID;
     private String username;
