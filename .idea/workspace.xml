@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="61cc7db2-aad8-4be3-b3a5-0ae18874fa63" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/AuthTokenDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/EventDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/PersonDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/exception/DataAccessException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/familymap/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/familymap/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/familymap/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/familymap/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/EventDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/EventDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/exception/DataAccessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exception/DataAccessException.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,6 +58,11 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -86,7 +90,7 @@
       <workItem from="1570667249525" duration="1274000" />
       <workItem from="1570736504832" duration="1121000" />
       <workItem from="1570738009778" duration="2347000" />
-      <workItem from="1570824295876" duration="1827000" />
+      <workItem from="1570824295876" duration="5060000" />
     </task>
     <task id="LOCAL-00001" summary="Added Server class">
       <created>1570747584104</created>
@@ -95,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570747584104</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Created DAO classes, made text file for SQLite statements.">
+      <created>1570828315326</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1570828315326</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,6 +127,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added Server class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Server class" />
+    <MESSAGE value="Created DAO classes, made text file for SQLite statements." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created DAO classes, made text file for SQLite statements." />
   </component>
 </project>
