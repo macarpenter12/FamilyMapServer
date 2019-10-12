@@ -6,13 +6,13 @@ import familymap.Event;
 import java.sql.Connection;
 
 /**
- * Handles the database access operations for Event objects and the event table.
+ * Handles database access operations for Event objects and the event table.
  */
 public class EventDAO {
     private Connection conn;
 
     /**
-     * @param conn The Connection object that you want to link to this DAO.
+     * @param conn The Connection object to link to this DAO.
      */
     public EventDAO(Connection conn) { this.conn = conn; }
 
