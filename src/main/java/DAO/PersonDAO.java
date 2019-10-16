@@ -4,6 +4,7 @@ import exception.DataAccessException;
 import familymap.Person;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 /**
  * Handles database access operations for Person objects.
@@ -29,4 +30,19 @@ public class PersonDAO {
      * @throws DataAccessException If error occurred when accessing data.
      */
     public Person find(String personID) throws DataAccessException { return null; }
+
+    /**
+     * Finds all Person objects associated with the given username.
+     * @param username The username to search for.
+     * @return A list of Person objects associated with the given username.
+     * @throws DataAccessException If error occurred when accessing data.
+     */
+    public ArrayList<Person> findByUsername(String username) throws DataAccessException { return null; }
+
+    /**
+     * Finds all Person objects assocaited with the given username, then removes them from existing tables.
+     * @param username The username to search for and remove.
+     * @throws DataAccessException If error occurred when accessing data.
+     */
+    public void deleteByUser(String username) throws DataAccessException { }
 }
