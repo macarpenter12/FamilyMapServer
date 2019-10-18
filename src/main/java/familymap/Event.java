@@ -11,6 +11,34 @@ public class Event {
     private String type;
     private int year;
 
+    public Event(String eventID, String username, String personID, double latitude, double longitude, String country, String city, String type, int year) {
+        this.eventID = eventID;
+        this.username = username;
+        this.personID = personID;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.country = country;
+        this.city = city;
+        this.type = type;
+        this.year = year;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Event event = (Event) o;
+        return (Math.abs(event.latitude - this.latitude) < 0.01) &&
+                (Math.abs(event.longitude - this.longitude) < 0.01) &&
+                year == event.year &&
+                eventID.equals(event.eventID) &&
+                username.equals(event.username) &&
+                personID.equals(event.personID) &&
+                country.equals(event.country) &&
+                city.equals(event.city) &&
+                type.equals(event.type);
+    }
+
     public String getEventID() {
         return eventID;
     }

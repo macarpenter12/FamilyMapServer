@@ -37,7 +37,7 @@ public class PersonDAO {
      * @return A list of Person objects associated with the given username.
      * @throws DataAccessException If error occurred when accessing data.
      */
-    public ArrayList<Person> findByUsername(String username) throws DataAccessException { return null; }
+    public ArrayList<Person> findByUser(String username) throws DataAccessException { return null; }
 
     /**
      * Finds all Person objects assocaited with the given username, then removes them from existing tables.

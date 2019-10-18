@@ -3,7 +3,7 @@ package DAO;
 import exception.DataAccessException;
 import familymap.Event;
 
-import java.sql.Connection;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
@@ -19,17 +19,80 @@ public class EventDAO {
 
     /**
      * @param event The Event object you want to insert into the table.
-     * @return Whether the Event object could be added to the table or not.
      * @throws DataAccessException Custom Exception used so that not all DAO classes have to be JDBC. Replaces SQL Exception.
      */
-    public boolean insert(Event event) throws DataAccessException { return false; }
+    public void insert(Event event) throws DataAccessException {
+        // Initialize sql statement
+        String sql = "INSERT INTO event_table " +
+                "(eventID, username, personID, latitude, longitude, country, city, type, year)" +
+                "VALUES(?,?,?,?,?,?,?,?,?)";
+
+        // Update sql using prepared statement
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, event.getEventID());
+            stmt.setString(2, event.getUsername());
+            stmt.setString(3, event.getPersonID());
+            stmt.setDouble(4, event.getLatitude());
+            stmt.setDouble(5, event.getLongitude());
+            stmt.setString(6, event.getCountry());
+            stmt.setString(7, event.getCity());
+            stmt.setString(8, event.getType());
+            stmt.setInt(9, event.getYear());
+
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            throw new DataAccessException("Error encountered while inserting into the database");
+        }
+    }
 
     /**
      * @param eventID eventID member of Event object to be found in the table.
      * @return Event object that has member object eventID.
      * @throws DataAccessException Custom Exception used so that not all DAO classes have to be JDBC. Replaces SQL Exception.
      */
-    public Event find(String eventID) throws DataAccessException { return null; }
+    public Event find(String eventID) throws DataAccessException {
+        Event event;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM event_table WHERE eventID = ?;";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, eventID);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                event = new Event(rs.getString("eventID"),
+                        rs.getString("username"),
+                        rs.getString("personID"),
+                        rs.getFloat("latitude"),
+                        rs.getFloat("longitude"),
+                        rs.getString("country"),
+                        rs.getString("city"),
+                        rs.getString("type"),
+                        rs.getInt("year")
+                        );
+                return event;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new DataAccessException("Error occurred while finding event " + eventID);
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return null;
+    }
+    
+    public void clearTable() throws DataAccessException {
+        try (Statement stmt = conn.createStatement()) {
+            String sql = "DELETE FORM event_table";
+            stmt.executeUpdate(sql);
+        } catch (SQLException ex) {
+            throw new DataAccessException("SQL Error encountered while clearing event table");
+        }
+    }
 
     /**
      * Finds all Events associated with an input username.
