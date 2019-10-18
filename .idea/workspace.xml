@@ -5,31 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61cc7db2-aad8-4be3-b3a5-0ae18874fa63" name="Default Changelist" comment="Added service classes. Wrote EventDAO, ready for unit tests.">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/familymap.sqlite" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/ClearService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/EventService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/FillService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/LoadService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/LoginService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/PersonService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/RegisterUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/sqlite.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/dao/EventDAOTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/dao/PersonDAOTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/familymap.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/familymap.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/EventDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/EventDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/PersonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/PersonDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/exception/DataAccessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exception/DataAccessException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/familymap/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/familymap/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/register.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/familymap/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/familymap/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dao/PersonDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dao/PersonDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dao/UserDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dao/UserDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/EventDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/EventDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/PersonDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/PersonDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/UserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/FamilyMapServer.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/familymap/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/familymap/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/familymap/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/familymap/User.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -129,9 +119,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.EventDAOTest.insertFail">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="server.Main" />
+  <component name="RunManager" selected="JUnit.UserDAOTest">
+    <configuration name="Server" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.Server" />
       <module name="FamilyMapServer" />
       <extension name="coverage">
         <pattern>
@@ -143,15 +133,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Server" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="server.Server" />
+    <configuration name="EventDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FamilyMapServer" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="server.*" />
+          <option name="PATTERN" value="dao.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="dao" />
+      <option name="MAIN_CLASS_NAME" value="dao.EventDAOTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -172,7 +164,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EventDAOTest.insertPass" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PersonDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FamilyMapServer" />
       <extension name="coverage">
         <pattern>
@@ -181,18 +173,50 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="dao" />
-      <option name="MAIN_CLASS_NAME" value="dao.EventDAOTest" />
+      <option name="MAIN_CLASS_NAME" value="dao.PersonDAOTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PersonDAOTest.insertPass" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FamilyMapServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dao" />
+      <option name="MAIN_CLASS_NAME" value="dao.PersonDAOTest" />
       <option name="METHOD_NAME" value="insertPass" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FamilyMapServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dao" />
+      <option name="MAIN_CLASS_NAME" value="dao.UserDAOTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserDAOTest" />
+        <item itemvalue="JUnit.PersonDAOTest" />
+        <item itemvalue="JUnit.EventDAOTest" />
+        <item itemvalue="JUnit.PersonDAOTest.insertPass" />
         <item itemvalue="JUnit.EventDAOTest.insertFail" />
-        <item itemvalue="JUnit.EventDAOTest.insertPass" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -219,6 +243,8 @@
       <workItem from="1571359970256" duration="10572000" />
       <workItem from="1571372450197" duration="393000" />
       <workItem from="1571372857405" duration="7657000" />
+      <workItem from="1571423328600" duration="9720000" />
+      <workItem from="1571434202012" duration="18000" />
     </task>
     <task id="LOCAL-00001" summary="Added Server class">
       <created>1570747584104</created>
@@ -248,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571380987137</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Finished DAO classes and all JUnit test cases.">
+      <created>1571431786711</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1571431786711</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,7 +307,8 @@
     <MESSAGE value="Added most JavaDoc. Structure of program is complete and ready for TA approval." />
     <MESSAGE value="Added service classes. Wrote EventDAO, ready for unit tests." />
     <MESSAGE value="EventDAO and EventDAOTest are done. Now must implement PersonDAO and UserDao, along with unit tests." />
-    <option name="LAST_COMMIT_MESSAGE" value="EventDAO and EventDAOTest are done. Now must implement PersonDAO and UserDao, along with unit tests." />
+    <MESSAGE value="Finished DAO classes and all JUnit test cases." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished DAO classes and all JUnit test cases." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

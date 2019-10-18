@@ -1,5 +1,7 @@
 package familymap;
 
+import java.util.Objects;
+
 /**
  * A Person is the basic unit of information in the database. They will represent fictional people
  * and will contain identity information and Events that supposedly happened in their lives. The user
@@ -15,6 +17,32 @@ public class Person {
     private String fatherID;
     private String motherID;
     private String spouseID;
+
+    public Person(String personID, String username, String firstName, String lastName, String gender, String fatherID, String motherID, String spouseID) {
+        this.personID = personID;
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.fatherID = fatherID;
+        this.motherID = motherID;
+        this.spouseID = spouseID;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return personID.equals(person.personID) &&
+                username.equals(person.username) &&
+                firstName.equals(person.firstName) &&
+                lastName.equals(person.lastName) &&
+                gender.equals(person.gender) &&
+                fatherID.equals(person.fatherID) &&
+                motherID.equals(person.motherID) &&
+                spouseID.equals(person.spouseID);
+    }
 
     public String getUsername() {
         return username;

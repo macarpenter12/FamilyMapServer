@@ -41,7 +41,7 @@ public class EventDAO {
 
             stmt.executeUpdate();
         } catch (SQLException ex) {
-            throw new DataAccessException("Error encountered while inserting into the database");
+            throw new DataAccessException("Error encountered while inserting event into the database");
         }
     }
 
@@ -54,6 +54,7 @@ public class EventDAO {
         Event event;
         ResultSet rs = null;
         String sql = "SELECT * FROM event_table WHERE eventID = ?;";
+
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, eventID);
             rs = stmt.executeQuery();
@@ -84,10 +85,14 @@ public class EventDAO {
         }
         return null;
     }
-    
+
+    /**
+     * Clears all items from the event table, but does not delete the table itself.
+     * @throws DataAccessException If error occurred while accessing data.
+     */
     public void clearTable() throws DataAccessException {
         try (Statement stmt = conn.createStatement()) {
-            String sql = "DELETE FORM event_table";
+            String sql = "DELETE FROM event_table";
             stmt.executeUpdate(sql);
         } catch (SQLException ex) {
             throw new DataAccessException("SQL Error encountered while clearing event table");
