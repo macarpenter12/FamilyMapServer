@@ -1,5 +1,7 @@
 package familymap;
 
+import java.util.Objects;
+
 /**
  * Users will be stored in the database to save login and identity information. This will link
  * a user to a Person object and allow them to be granted an Authorization Token.
@@ -11,6 +13,28 @@ public class User {
     private String firstName;
     private String lastName;
     private String gender;
+
+    public User(String username, String password, String email, String firstName, String lastName, String gender) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return username.equals(user.username) &&
+                password.equals(user.password) &&
+                email.equals(user.email) &&
+                firstName.equals(user.firstName) &&
+                lastName.equals(user.lastName) &&
+                gender.equals(user.gender);
+    }
 
     public String getUsername() {
         return username;
