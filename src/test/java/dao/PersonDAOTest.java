@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import server.Server;
 
 import java.sql.Connection;
+import java.sql.Statement;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -80,6 +81,46 @@ public class PersonDAOTest {
     }
 
     @Test
+    public void queryPass() throws Exception {
+        Person comparePerson = null;
+        try {
+            Connection conn = server.openConnection();
+            PersonDAO pDao = new PersonDAO(conn);
+
+            pDao.insert(testPerson);
+            comparePerson = pDao.find(testPerson.getPersonID());
+
+            server.closeConnection(true);
+        } catch (DataAccessException ex) {
+            server.closeConnection(false);
+        }
+        assertNotNull(comparePerson);
+        assertEquals(testPerson, comparePerson);
+    }
+
+    @Test
+    public void queryFail() throws Exception {
+        Person comparePerson = null;
+        try {
+            Connection conn = server.openConnection();
+            PersonDAO pDao = new PersonDAO(conn);
+
+            pDao.insert(testPerson);
+            StringBuilder strb = new StringBuilder(testPerson.getPersonID());
+            // Alter the personID
+            for (int i = strb.length(); i > 0; --i) {
+                strb.insert(i, 'x');
+            }
+            comparePerson = pDao.find(strb.toString());            // Should not find person
+
+            server.closeConnection(true);
+        } catch (DataAccessException ex ) {
+            server.closeConnection(false);
+        }
+        assertNull(comparePerson);
+    }
+
+    @Test
     public void clearTable() throws Exception {
         Person comparePersonBefore = null;
         Person comparePersonAfter = null;
@@ -101,5 +142,35 @@ public class PersonDAOTest {
         assertNotNull(comparePersonBefore);
         assertNull(comparePersonAfter);
         assertNotEquals(comparePersonBefore, comparePersonAfter);
+    }
+
+    @Test
+    public void clearFail() throws Exception {
+        Person comparePerson1 = null;
+        Person comparePerson2 = null;
+        boolean thrown = false;
+        try {
+            Connection conn = server.openConnection();
+            PersonDAO pDao = new PersonDAO(conn);
+
+            pDao.insert(testPerson);
+            pDao.clearTable();
+            comparePerson1 = pDao.find(testPerson.getPersonID());
+            pDao.clearTable();
+            comparePerson2 = pDao.find(testPerson.getPersonID());
+
+            String sql = "DROP TABLE IF EXISTS person_table";
+            Statement stmt = server.getConn().createStatement();
+            stmt.executeUpdate(sql);
+            pDao.clearTable();
+
+            server.closeConnection(true);
+        } catch (DataAccessException ex) {
+            server.closeConnection(false);
+            thrown = true;
+        }
+        assertNull(comparePerson1);
+        assertNull(comparePerson2);
+        assertTrue(thrown);
     }
 }

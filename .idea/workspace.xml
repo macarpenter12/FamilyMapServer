@@ -5,21 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61cc7db2-aad8-4be3-b3a5-0ae18874fa63" name="Default Changelist" comment="Added service classes. Wrote EventDAO, ready for unit tests.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/familymap.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/familymap.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/EventDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/EventDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/PersonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/PersonDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/familymap/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/familymap/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RegisterUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RegisterUserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/dao/PersonDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dao/PersonDAOTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/dao/UserDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dao/UserDAOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DAO/EventDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/EventDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DAO/PersonDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/PersonDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DAO/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/UserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/FamilyMapServer.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/familymap/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/familymap/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/familymap/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/familymap/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/dao/PersonDAOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/dao/PersonDAOTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/dao/UserDAOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/dao/UserDAOTest.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +92,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -245,6 +239,9 @@
       <workItem from="1571372857405" duration="7657000" />
       <workItem from="1571423328600" duration="9720000" />
       <workItem from="1571434202012" duration="18000" />
+      <workItem from="1571434552610" duration="3013000" />
+      <workItem from="1571512775478" duration="3484000" />
+      <workItem from="1571679889778" duration="548000" />
     </task>
     <task id="LOCAL-00001" summary="Added Server class">
       <created>1570747584104</created>
@@ -309,16 +306,5 @@
     <MESSAGE value="EventDAO and EventDAOTest are done. Now must implement PersonDAO and UserDao, along with unit tests." />
     <MESSAGE value="Finished DAO classes and all JUnit test cases." />
     <option name="LAST_COMMIT_MESSAGE" value="Finished DAO classes and all JUnit test cases." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/familymap/Event.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
