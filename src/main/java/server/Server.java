@@ -1,8 +1,13 @@
 package server;
 
+import com.sun.net.httpserver.HttpServer;
 import exception.DataAccessException;
 import familymap.User;
+import service.FileService;
 
+import java.io.IOError;
+import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.sql.*;
 
 public class Server {
@@ -14,6 +19,16 @@ public class Server {
 
     public void setConn(Connection conn) {
         this.conn = conn;
+    }
+
+    private void startServer(int port) throws IOException {
+        InetSocketAddress serverAddress = new InetSocketAddress(port);
+        HttpServer httpServ = HttpServer.create(serverAddress, 10);
+        registerHandlers(httpServ);
+    }
+
+    private void registerHandlers(HttpServer httpServ) {
+        httpServ.createContext("/", new FileService());
     }
 
     public Connection openConnection() throws DataAccessException {
