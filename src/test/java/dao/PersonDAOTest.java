@@ -160,7 +160,7 @@ public class PersonDAOTest {
             comparePerson2 = pDao.find(testPerson.getPersonID());
 
             String sql = "DROP TABLE IF EXISTS person_table";
-            Statement stmt = server.getConn().createStatement();
+            Statement stmt = server.getConnection().createStatement();
             stmt.executeUpdate(sql);
             pDao.clearTable();
 

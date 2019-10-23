@@ -159,7 +159,7 @@ public class UserDAOTest {
             compareUser2 = uDao.find(testUser.getUsername());
 
             String sql = "DROP TABLE IF EXISTS user_table";
-            Statement stmt = server.getConn().createStatement();
+            Statement stmt = server.getConnection().createStatement();
             stmt.executeUpdate(sql);
             uDao.clearTable();
 
