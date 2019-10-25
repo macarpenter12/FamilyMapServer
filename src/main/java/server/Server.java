@@ -38,7 +38,7 @@ public class Server {
 		}
 	}
 
-	public void startServer(int port) throws IOException {
+	private void startServer(int port) throws IOException {
 		InetSocketAddress serverAddress = new InetSocketAddress(port);
 		HttpServer httpServ = HttpServer.create(serverAddress, 10);
 		registerHandlers(httpServ);
