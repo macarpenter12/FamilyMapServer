@@ -1,35 +1,35 @@
 package service;
 
+import DAO.Database;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import server.Server;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class FileServiceTest {
-	Server server = new Server();
+public class FileHandlerTest {
+	Database db = new Database();
 
 	@BeforeEach
 	public void setup() throws Exception {
-		server = new Server();
-		server.openConnection();
-		server.createTables();
-		server.closeConnection(true);
+		db = new Database();
+		db.openConnection();
+		db.createTables();
+		db.closeConnection(true);
 	}
 
 	@AfterEach
 	public void tearDown() throws Exception {
-		server.openConnection();
-		server.clearTables();
-		server.closeConnection(true);
+		db.openConnection();
+		db.clearTables();
+		db.closeConnection(true);
 	}
 
 	@Test
 	public void get() throws Exception {
-		server.startServer(8080);
+//		server.startServer(8080);
 
 		URL url = new URL("http://localhost:8080/");
 

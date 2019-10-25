@@ -1,5 +1,6 @@
 package dao;
 
+import DAO.Database;
 import DAO.UserDAO;
 import exception.DataAccessException;
 import familymap.User;
@@ -14,39 +15,39 @@ import java.sql.Statement;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserDAOTest {
-    private Server server;
+    private Database db;
     private User testUser;
 
     @BeforeEach
     public void setup() throws Exception {
-        server = new Server();
+        db = new Database();
         testUser = new User("anyuser123", "p@ssw0rd", "johndoe@email.com",
                 "John", "Doe", "m");
-        server.openConnection();
-        server.createTables();
-        server.closeConnection(true);
+        db.openConnection();
+        db.createTables();
+        db.closeConnection(true);
     }
 
     @AfterEach
     public void tearDown() throws Exception {
-        server.openConnection();
-        server.clearTables();
-        server.closeConnection(true);
+        db.openConnection();
+        db.clearTables();
+        db.closeConnection(true);
     }
 
     @Test
     public void insertPass() throws Exception {
         User compareUser = null;
         try {
-            Connection conn = server.openConnection();
+            Connection conn = db.openConnection();
             UserDAO uDao = new UserDAO(conn);
 
             uDao.insert(testUser);
             compareUser = uDao.find(testUser.getUsername());
 
-            server.closeConnection(true);
+            db.closeConnection(true);
         } catch (DataAccessException ex) {
-            server.closeConnection(false);
+            db.closeConnection(false);
         }
         assertNotNull(compareUser);
         assertEquals(testUser, compareUser);
@@ -56,26 +57,26 @@ public class UserDAOTest {
     public void insertFail() throws Exception {
         boolean pass = true;
         try {
-            Connection conn = server.openConnection();
+            Connection conn = db.openConnection();
             UserDAO uDao = new UserDAO(conn);
 
             uDao.insert(testUser);
             uDao.insert(testUser);
-            server.closeConnection(true);
+            db.closeConnection(true);
         } catch (DataAccessException ex) {
-            server.closeConnection(false);
+            db.closeConnection(false);
             pass = false;
         }
         assertFalse(pass);
 
         User compareTest = testUser;
         try {
-            Connection conn = server.openConnection();
+            Connection conn = db.openConnection();
             UserDAO uDao = new UserDAO(conn);
             compareTest = uDao.find(testUser.getUsername());
-            server.closeConnection(true);
+            db.closeConnection(true);
         } catch (DataAccessException ex) {
-            server.closeConnection(false);
+            db.closeConnection(false);
         }
         assertNull(compareTest);
     }
@@ -84,15 +85,15 @@ public class UserDAOTest {
     public void queryPass() throws Exception {
         User compareUser = null;
         try {
-            Connection conn = server.openConnection();
+            Connection conn = db.openConnection();
             UserDAO uDao = new UserDAO(conn);
 
             uDao.insert(testUser);
             compareUser = uDao.find(testUser.getUsername());
 
-            server.closeConnection(true);
+            db.closeConnection(true);
         } catch (DataAccessException ex) {
-            server.closeConnection(false);
+            db.closeConnection(false);
         }
         assertNotNull(compareUser);
         assertEquals(testUser, compareUser);
@@ -102,7 +103,7 @@ public class UserDAOTest {
     public void queryFail() throws Exception {
         User compareUser = null;
         try {
-            Connection conn = server.openConnection();
+            Connection conn = db.openConnection();
             UserDAO uDao = new UserDAO(conn);
 
             uDao.insert(testUser);
@@ -112,9 +113,9 @@ public class UserDAOTest {
             }
             compareUser = uDao.find(strb.toString());
 
-            server.closeConnection(true);
+            db.closeConnection(true);
         } catch (DataAccessException ex) {
-            server.closeConnection(false);
+            db.closeConnection(false);
         }
         assertNull(compareUser);
     }
@@ -124,7 +125,7 @@ public class UserDAOTest {
         User compareUserBefore = null;
         User compareUserAfter = null;
         try {
-            Connection conn = server.openConnection();
+            Connection conn = db.openConnection();
             UserDAO uDao = new UserDAO(conn);
 
             // Insert a user into the db
@@ -134,9 +135,9 @@ public class UserDAOTest {
             uDao.clearTable();
             // Table has been cleared, should not be able to find user
             compareUserAfter = uDao.find(testUser.getUsername());
-            server.closeConnection(true);
+            db.closeConnection(true);
         } catch (DataAccessException ex) {
-            server.closeConnection(false);
+            db.closeConnection(false);
         }
         assertNotNull(compareUserBefore);
         assertNull(compareUserAfter);
@@ -149,7 +150,7 @@ public class UserDAOTest {
         User compareUser2 = null;
         boolean thrown = false;
         try {
-            Connection conn = server.openConnection();
+            Connection conn = db.openConnection();
             UserDAO uDao = new UserDAO(conn);
 
             uDao.insert(testUser);
@@ -159,13 +160,13 @@ public class UserDAOTest {
             compareUser2 = uDao.find(testUser.getUsername());
 
             String sql = "DROP TABLE IF EXISTS user_table";
-            Statement stmt = server.getConnection().createStatement();
+            Statement stmt = db.getConnection().createStatement();
             stmt.executeUpdate(sql);
             uDao.clearTable();
 
-            server.closeConnection(true);
+            db.closeConnection(true);
         } catch (DataAccessException ex) {
-            server.closeConnection(false);
+            db.closeConnection(false);
             thrown = true;
         }
         assertNull(compareUser1);

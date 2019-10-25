@@ -1,12 +1,12 @@
 package dao;
 
+import DAO.Database;
 import DAO.PersonDAO;
 import exception.DataAccessException;
 import familymap.Person;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import server.Server;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -14,39 +14,39 @@ import java.sql.Statement;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PersonDAOTest {
-    private Server server;
+    private Database db;
     private Person testPerson;
 
     @BeforeEach
     public void setup() throws Exception {
-        server = new Server();
+        db = new Database();
         testPerson = new Person("a1s2d3f4", "anyperson123", "John", "Doe",
                 "m", "q1w2e3r4", "z1x2c3v4", "h1j2k3l4");
-        server.openConnection();
-        server.createTables();
-        server.closeConnection(true);
+        db.openConnection();
+        db.createTables();
+        db.closeConnection(true);
     }
 
     @AfterEach
     public void tearDown() throws Exception {
-        server.openConnection();
-        server.clearTables();
-        server.closeConnection(true);
+        db.openConnection();
+        db.clearTables();
+        db.closeConnection(true);
     }
 
     @Test
     public void insertPass() throws Exception {
         Person comparePerson = null;
         try {
-            Connection conn = server.openConnection();
+            Connection conn = db.openConnection();
             PersonDAO pDao = new PersonDAO(conn);
 
             pDao.insert(testPerson);
             comparePerson = pDao.find(testPerson.getPersonID());
 
-            server.closeConnection(true);
+            db.closeConnection(true);
         } catch (DataAccessException ex) {
-            server.closeConnection(false);
+            db.closeConnection(false);
         }
         assertNotNull(comparePerson);
         assertEquals(testPerson, comparePerson);
@@ -56,26 +56,26 @@ public class PersonDAOTest {
     public void insertFail() throws Exception {
         boolean pass = true;
         try {
-            Connection conn = server.openConnection();
+            Connection conn = db.openConnection();
             PersonDAO pDao = new PersonDAO(conn);
 
             pDao.insert(testPerson);
             pDao.insert(testPerson);
-            server.closeConnection(true);
+            db.closeConnection(true);
         } catch (DataAccessException ex) {
-            server.closeConnection(false);
+            db.closeConnection(false);
             pass = false;
         }
         assertFalse(pass);
 
         Person compareTest = testPerson;
         try {
-            Connection conn = server.openConnection();
+            Connection conn = db.openConnection();
             PersonDAO pDao = new PersonDAO(conn);
             compareTest = pDao.find(testPerson.getPersonID());
-            server.closeConnection(true);
+            db.closeConnection(true);
         } catch (DataAccessException ex) {
-            server.closeConnection(false);
+            db.closeConnection(false);
         }
         assertNull(compareTest);
     }
@@ -84,15 +84,15 @@ public class PersonDAOTest {
     public void queryPass() throws Exception {
         Person comparePerson = null;
         try {
-            Connection conn = server.openConnection();
+            Connection conn = db.openConnection();
             PersonDAO pDao = new PersonDAO(conn);
 
             pDao.insert(testPerson);
             comparePerson = pDao.find(testPerson.getPersonID());
 
-            server.closeConnection(true);
+            db.closeConnection(true);
         } catch (DataAccessException ex) {
-            server.closeConnection(false);
+            db.closeConnection(false);
         }
         assertNotNull(comparePerson);
         assertEquals(testPerson, comparePerson);
@@ -102,7 +102,7 @@ public class PersonDAOTest {
     public void queryFail() throws Exception {
         Person comparePerson = null;
         try {
-            Connection conn = server.openConnection();
+            Connection conn = db.openConnection();
             PersonDAO pDao = new PersonDAO(conn);
 
             pDao.insert(testPerson);
@@ -113,9 +113,9 @@ public class PersonDAOTest {
             }
             comparePerson = pDao.find(strb.toString());            // Should not find person
 
-            server.closeConnection(true);
+            db.closeConnection(true);
         } catch (DataAccessException ex ) {
-            server.closeConnection(false);
+            db.closeConnection(false);
         }
         assertNull(comparePerson);
     }
@@ -125,7 +125,7 @@ public class PersonDAOTest {
         Person comparePersonBefore = null;
         Person comparePersonAfter = null;
         try {
-            Connection conn = server.openConnection();
+            Connection conn = db.openConnection();
             PersonDAO pDao = new PersonDAO(conn);
 
             // Insert a person into the db
@@ -135,9 +135,9 @@ public class PersonDAOTest {
             pDao.clearTable();
             // Table has been cleared, should not be able to find person
             comparePersonAfter = pDao.find(testPerson.getPersonID());
-            server.closeConnection(true);
+            db.closeConnection(true);
         } catch (DataAccessException ex) {
-            server.closeConnection(false);
+            db.closeConnection(false);
         }
         assertNotNull(comparePersonBefore);
         assertNull(comparePersonAfter);
@@ -150,7 +150,7 @@ public class PersonDAOTest {
         Person comparePerson2 = null;
         boolean thrown = false;
         try {
-            Connection conn = server.openConnection();
+            Connection conn = db.openConnection();
             PersonDAO pDao = new PersonDAO(conn);
 
             pDao.insert(testPerson);
@@ -160,13 +160,13 @@ public class PersonDAOTest {
             comparePerson2 = pDao.find(testPerson.getPersonID());
 
             String sql = "DROP TABLE IF EXISTS person_table";
-            Statement stmt = server.getConnection().createStatement();
+            Statement stmt = db.getConnection().createStatement();
             stmt.executeUpdate(sql);
             pDao.clearTable();
 
-            server.closeConnection(true);
+            db.closeConnection(true);
         } catch (DataAccessException ex) {
-            server.closeConnection(false);
+            db.closeConnection(false);
             thrown = true;
         }
         assertNull(comparePerson1);
