@@ -23,20 +23,21 @@ public class UserDAO {
      */
     public void insert(User user) throws DataAccessException {
         String sql = "INSERT INTO user_table " +
-                "(username, password, email, firstName, lastName, gender) " +
-                "VALUES(?,?,?,?,?,?)";
+                "(userName, password, email, firstName, lastName, gender, personID) " +
+                "VALUES(?,?,?,?,?,?,?)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, user.getUsername());
+            stmt.setString(1, user.getUserName());
             stmt.setString(2, user.getPassword());
             stmt.setString(3, user.getEmail());
             stmt.setString(4, user.getFirstName());
             stmt.setString(5, user.getLastName());
             stmt.setString(6, user.getGender());
+            stmt.setString(7, user.getPersonID());
 
             stmt.executeUpdate();
-        } catch (SQLException ex){
-            throw new DataAccessException("Error encountered while inserting user into database");
+        } catch (SQLException ex) {
+            throw new DataAccessException(ex.getMessage());
         }
     }
 
@@ -48,22 +49,24 @@ public class UserDAO {
     public User find(String username) throws DataAccessException {
         User user;
         ResultSet rs = null;
-        String sql = "SELECT * FROM user_table WHERE username = ?;";
+        String sql = "SELECT * FROM user_table WHERE userName = ?;";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, username);
             rs = stmt.executeQuery();
             if (rs.next()) {
-                user = new User(rs.getString("username"),
+                user = new User(rs.getString("userName"),
                         rs.getString("password"),
                         rs.getString("email"),
                         rs.getString("firstName"),
                         rs.getString("lastName"),
-                        rs.getString("gender")
+                        rs.getString("gender"),
+                        rs.getString("personID")
                         );
                 return user;
             }
         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             ex.printStackTrace();
             throw new DataAccessException("Error occurred while finding user " + username);
         } finally {
@@ -87,6 +90,8 @@ public class UserDAO {
             String sql = "DELETE FROM user_table";
             stmt.executeUpdate(sql);
         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
             throw new DataAccessException("SQL Error encountered while clearing user table");
         }
     }

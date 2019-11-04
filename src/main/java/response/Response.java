@@ -1,12 +1,12 @@
 package response;
 
-public abstract class Response {
+public class Response {
 	String message;
 	Boolean success;
 
 	public Response() {
-		this.message = "message";
-		this.success = false;
+		this.message = null;
+		this.success = null;
 	}
 
 	public Response(String message, Boolean success) {

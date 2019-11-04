@@ -1,26 +1,27 @@
 package familymap;
 
 public class Event {
-    private String eventID;
-    private String username;
+    private String eventType;
     private String personID;
+    private String city;
+    private String country;
     private double latitude;
     private double longitude;
-    private String country;
-    private String city;
-    private String type;
     private int year;
+    private String eventID;
+    private String associatedUsername;
 
-    public Event(String eventID, String username, String personID, double latitude, double longitude, String country, String city, String type, int year) {
-        this.eventID = eventID;
-        this.username = username;
+    public Event(String eventType, String personID, String city, String country, double latitude, double longitude,
+                 int year, String eventID, String associatedUsername) {
+        this.eventType = eventType;
         this.personID = personID;
+        this.city = city;
+        this.country = country;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.country = country;
-        this.city = city;
-        this.type = type;
         this.year = year;
+        this.eventID = eventID;
+        this.associatedUsername = associatedUsername;
     }
 
     @Override
@@ -32,11 +33,11 @@ public class Event {
                 (Math.abs(event.longitude - this.longitude) < 0.01) &&
                 year == event.year &&
                 eventID.equals(event.eventID) &&
-                username.equals(event.username) &&
+                associatedUsername.equals(event.associatedUsername) &&
                 personID.equals(event.personID) &&
                 country.equals(event.country) &&
                 city.equals(event.city) &&
-                type.equals(event.type);
+                eventType.equals(event.eventType);
     }
 
     public String getEventID() {
@@ -47,12 +48,12 @@ public class Event {
         this.eventID = eventID;
     }
 
-    public String getUsername() {
-        return username;
+    public String getAssociatedUsername() {
+        return associatedUsername;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setAssociatedUsername(String associatedUsername) {
+        this.associatedUsername = associatedUsername;
     }
 
     public String getPersonID() {
@@ -96,11 +97,11 @@ public class Event {
     }
 
     public String getType() {
-        return type;
+        return eventType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setType(String eventType) {
+        this.eventType = eventType;
     }
 
     public int getYear() {

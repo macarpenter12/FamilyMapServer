@@ -1,7 +1,5 @@
 package familymap;
 
-import java.util.Objects;
-
 /**
  * A Person is the basic unit of information in the database. They will represent fictional people
  * and will contain identity information and Events that supposedly happened in their lives. The user
@@ -10,7 +8,7 @@ import java.util.Objects;
  */
 public class Person {
     private String personID;
-    private String username;
+    private String associatedUsername;
     private String firstName;
     private String lastName;
     private String gender;
@@ -18,9 +16,9 @@ public class Person {
     private String motherID;
     private String spouseID;
 
-    public Person(String personID, String username, String firstName, String lastName, String gender, String fatherID, String motherID, String spouseID) {
+    public Person(String personID, String associatedUsername, String firstName, String lastName, String gender, String fatherID, String motherID, String spouseID) {
         this.personID = personID;
-        this.username = username;
+        this.associatedUsername = associatedUsername;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -35,7 +33,7 @@ public class Person {
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
         return personID.equals(person.personID) &&
-                username.equals(person.username) &&
+                associatedUsername.equals(person.associatedUsername) &&
                 firstName.equals(person.firstName) &&
                 lastName.equals(person.lastName) &&
                 gender.equals(person.gender) &&
@@ -44,12 +42,12 @@ public class Person {
                 spouseID.equals(person.spouseID);
     }
 
-    public String getUsername() {
-        return username;
+    public String getAssociatedUsername() {
+        return associatedUsername;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setAssociatedUsername(String associatedUsername) {
+        this.associatedUsername = associatedUsername;
     }
 
     public String getFirstName() {

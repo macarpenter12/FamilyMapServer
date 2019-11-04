@@ -15,7 +15,6 @@ public class FileHandler implements HttpHandler {
 		try {
 			// This method must be a GET request
 			if (exchange.getRequestMethod().toUpperCase().equals("GET")) {
-				Headers reqHeaders = exchange.getRequestHeaders();
 				String urlPath = exchange.getRequestURI().toString();
 
 				// If URL path is root, default to index.html
@@ -53,16 +52,5 @@ public class FileHandler implements HttpHandler {
 			ex.printStackTrace();
 			throw ex;
 		}
-	}
-
-	private String readString(InputStream is) throws IOException {
-		StringBuilder sb = new StringBuilder();
-		InputStreamReader sr = new InputStreamReader(is);
-		char[] buf = new char[1024];
-		int len;
-		while ((len = sr.read(buf)) > 0) {
-			sb.append(buf, 0, len);
-		}
-		return sb.toString();
 	}
 }

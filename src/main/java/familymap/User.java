@@ -1,26 +1,26 @@
 package familymap;
 
-import java.util.Objects;
-
 /**
  * Users will be stored in the database to save login and identity information. This will link
  * a user to a Person object and allow them to be granted an Authorization Token.
  */
 public class User {
-    private String username;
+    private String userName;
     private String password;
     private String email;
     private String firstName;
     private String lastName;
     private String gender;
+    private String personID;
 
-    public User(String username, String password, String email, String firstName, String lastName, String gender) {
-        this.username = username;
+    public User(String userName, String password, String email, String firstName, String lastName, String gender, String personID) {
+        this.userName = userName;
         this.password = password;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
+        this.personID = personID;
     }
 
     @Override
@@ -28,20 +28,21 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return username.equals(user.username) &&
+        return userName.equals(user.userName) &&
                 password.equals(user.password) &&
                 email.equals(user.email) &&
                 firstName.equals(user.firstName) &&
                 lastName.equals(user.lastName) &&
-                gender.equals(user.gender);
+                gender.equals(user.gender) &&
+                personID.equals(user.personID);
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -83,4 +84,8 @@ public class User {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    public String getPersonID() { return personID; }
+
+    public void setPersonID(String personID) { this.personID = personID; }
 }

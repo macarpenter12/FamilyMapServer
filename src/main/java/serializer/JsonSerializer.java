@@ -1,8 +1,6 @@
 package serializer;
 
 import com.google.gson.Gson;
-import familymap.Person;
-import server.AuthToken;
 
 public class JsonSerializer {
 

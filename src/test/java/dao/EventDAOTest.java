@@ -20,9 +20,8 @@ public class EventDAOTest {
     @BeforeEach
     public void setup() throws Exception {
         db = new Database();
-        testEvent = new Event("a1s2d3f4", "anyuser123", "anyperson321",
-                32.69, -114.63, "USA", "Yuma",
-                "someEvent", 2019);
+        testEvent = new Event("started family map", "person100", "Provo", "USA",
+                13.86, 75.24, 2019, "event100", "username100");
         db.openConnection();
         db.createTables();
         db.closeConnection(true);

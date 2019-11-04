@@ -1,7 +1,7 @@
 package DAO;
 
 import exception.DataAccessException;
-import server.AuthToken;
+import familymap.AuthToken;
 
 import java.sql.*;
 
@@ -25,8 +25,8 @@ public class AuthTokenDAO {
                 "VALUES(?,?)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, authtoken.getToken());
-            stmt.setString(2, authtoken.getUsername());
+            stmt.setString(1, authtoken.getAuthToken());
+            stmt.setString(2, authtoken.getUserName());
 
             stmt.executeUpdate();
         } catch (SQLException ex) {
@@ -41,13 +41,13 @@ public class AuthTokenDAO {
     public AuthToken find(String token) throws DataAccessException {
         AuthToken authtoken;
         ResultSet rs = null;
-        String sql = "SELECT * FROM authtoken_table WHERE token = ?;";
+        String sql = "SELECT * FROM authtoken_table WHERE authToken = ?;";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, token);
             rs = stmt.executeQuery();
             if (rs.next()) {
-                authtoken = new AuthToken(rs.getString("token"), rs.getString("username"));
+                authtoken = new AuthToken(rs.getString("authToken"), rs.getString("username"));
                 return authtoken;
             }
         } catch (SQLException ex) {

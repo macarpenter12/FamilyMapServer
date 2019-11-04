@@ -1,26 +1,38 @@
 package server;
 
+import DAO.Database;
 import com.sun.net.httpserver.HttpServer;
 import exception.DataAccessException;
-import familymap.User;
-import handler.FileHandler;
-import handler.ClearHandler;
-import service.FileService;
+import handler.*;
 
-import java.io.IOError;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
-import java.net.URL;
-import java.sql.*;
 
 public class Server {
 
 	public static void main(String[] args) {
-		Server server = new Server();
+		Database db = new Database();
 		try {
-			server.startServer(8080);
+			db.openConnection();
+			db.createTables();
+//			db.clearTables();
+			db.closeConnection(true);
+		} catch (DataAccessException ex) {
+			try {
+				db.closeConnection(false);
+			} catch (DataAccessException closeEx) {
+				System.out.println(closeEx.getMessage());
+				closeEx.printStackTrace();
+			}
+			System.out.println(ex.getMessage());
+			ex.printStackTrace();
+		}
+
+
+		Server server = new Server();
+		final int DEFAULT_PORT = 8080;
+		try {
+			server.startServer(DEFAULT_PORT);
 		} catch (IOException ex) {
 			ex.printStackTrace();
 			System.out.println(ex.getMessage());
@@ -39,6 +51,11 @@ public class Server {
 	private void registerHandlers(HttpServer httpServ) {
 		httpServ.createContext("/", new FileHandler());
 		httpServ.createContext("/clear", new ClearHandler());
-	}
+		httpServ.createContext("/user/register", new RegisterHandler());
+		httpServ.createContext("/user/login", new LoginHandler());
+		httpServ.createContext("/load", new LoadHandler());
+		httpServ.createContext("/fill", new FillHandler());
+		httpServ.createContext("/event", new EventHandler());
 
+	}
 }
