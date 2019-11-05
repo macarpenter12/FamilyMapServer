@@ -4,6 +4,7 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import exception.DataAccessException;
 import response.FillResponse;
+import response.Response;
 import serializer.JsonSerializer;
 import serializer.StringStream;
 import service.FillService;
@@ -29,29 +30,16 @@ public class FillHandler implements HttpHandler {
 				FillService fillServ = new FillService();
 				FillResponse fillRes = fillServ.fill(userName, numGenerations);
 
-				// Success (OK)
-				exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
-
-				// Serialize, populate, and return response
-				String respData = JsonSerializer.serialize(fillRes);
-				OutputStream respBody = exchange.getResponseBody();
-				StringStream.writeString(respData, respBody);
-				respBody.close();
+				JsonSerializer.sendResponse(exchange, fillRes);
 
 			} catch (DataAccessException ex) {
-				// (INTERNAL ERROR)
-				exchange.sendResponseHeaders(HttpURLConnection.HTTP_INTERNAL_ERROR, 0);
-
-				// Send error body
-				FillResponse failRes = new FillResponse(ex.getMessage(), false);
-				String failData = JsonSerializer.serialize(failRes);
-				OutputStream failBody = exchange.getResponseBody();
-				StringStream.writeString(failData, failBody);
-				failBody.close();
+				JsonSerializer.sendInternalErrorResponse(exchange, new Response("error: internal error", false));
+			} catch (NullPointerException ex) {
+				JsonSerializer.sendResponse(exchange, new Response("error: user does not exist", false));
 			}
 		}
 		else {
-			exchange.sendResponseHeaders(HttpURLConnection.HTTP_BAD_REQUEST, 0);
+			JsonSerializer.sendResponse(exchange, new Response("error: incorrect request method", false));
 		}
 	}
 }

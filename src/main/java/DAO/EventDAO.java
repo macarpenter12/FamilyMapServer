@@ -4,6 +4,8 @@ import exception.DataAccessException;
 import familymap.Event;
 
 import java.sql.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 /**
@@ -60,13 +62,19 @@ public class EventDAO {
 		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 			stmt.setString(1, eventID);
 			rs = stmt.executeQuery();
+			// Format double values
+			NumberFormat formatter = new DecimalFormat("#0.00");
 			if (rs.next()) {
+				double lat = rs.getFloat("latitude");
+				double lon = rs.getFloat("longitude");
+				lat = Double.parseDouble(new DecimalFormat("#.####").format(lat));
+				lon = Double.parseDouble(new DecimalFormat("#.####").format(lon));
 				event = new Event(rs.getString("eventType"),
 						rs.getString("personID"),
 						rs.getString("city"),
 						rs.getString("country"),
-						rs.getFloat("latitude"),
-						rs.getFloat("longitude"),
+						lat,
+						lon,
 						rs.getInt("year"),
 						rs.getString("eventID"),
 						rs.getString("associatedUsername")
@@ -102,13 +110,19 @@ public class EventDAO {
 		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 			stmt.setString(1, userName);
 			rs = stmt.executeQuery();
+			// Format double values
+			NumberFormat formatter = new DecimalFormat("#0.00");
 			while (rs.next()) {
+				double lat = rs.getFloat("latitude");
+				double lon = rs.getFloat("longitude");
+				lat = Double.parseDouble(new DecimalFormat("#.####").format(lat));
+				lon = Double.parseDouble(new DecimalFormat("#.####").format(lon));
 				events.add(new Event(rs.getString("eventType"),
 						rs.getString("personID"),
 						rs.getString("city"),
 						rs.getString("country"),
-						rs.getFloat("latitude"),
-						rs.getFloat("longitude"),
+						lat,
+						lon,
 						rs.getInt("year"),
 						rs.getString("eventID"),
 						rs.getString("associatedUsername")
@@ -158,8 +172,6 @@ public class EventDAO {
 			String sql = "DELETE FROM event_table";
 			stmt.executeUpdate(sql);
 		} catch (SQLException ex) {
-			System.out.println(ex.getMessage());
-			ex.printStackTrace();
 			throw new DataAccessException("SQL Error encountered while clearing event table");
 		}
 	}

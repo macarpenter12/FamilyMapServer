@@ -5,14 +5,13 @@ import com.sun.net.httpserver.HttpHandler;
 import exception.DataAccessException;
 import request.LoadRequest;
 import response.LoadResponse;
+import response.Response;
 import serializer.JsonSerializer;
 import serializer.StringStream;
 import service.LoadService;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
 
 public class LoadHandler implements HttpHandler {
 
@@ -31,29 +30,14 @@ public class LoadHandler implements HttpHandler {
 				LoadService loadServ = new LoadService();
 				LoadResponse loadResp = loadServ.load(loadReq);
 
-				// Success (OK)
-				exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
-
-				// Serialize, populate, and return response
-				String respData = JsonSerializer.serialize(loadResp);
-				OutputStream respBody = exchange.getResponseBody();
-				StringStream.writeString(respData, respBody);
-				respBody.close();
+				JsonSerializer.sendResponse(exchange, loadResp);
 			} catch (DataAccessException ex) {
-				// Something went wrong on our end (INTERNAL ERROR)
-				exchange.sendResponseHeaders(HttpURLConnection.HTTP_INTERNAL_ERROR, 0);
-
-				// Send error JSON body for Load request
-				LoadResponse failResp = new LoadResponse(ex.getMessage(), false);
-				String failData = JsonSerializer.serialize(failResp);
-				OutputStream failBody = exchange.getResponseBody();
-				StringStream.writeString(failData, failBody);
-				failBody.close();
+				JsonSerializer.sendInternalErrorResponse(exchange, new Response("error: internal error", false));
 			}
 		}
 		// Not a POST request (BAD REQUEST)
 		else {
-			exchange.sendResponseHeaders(HttpURLConnection.HTTP_BAD_REQUEST, 0);
+			JsonSerializer.sendResponse(exchange, new Response("error: incorrect request method", false));
 		}
 	}
 }

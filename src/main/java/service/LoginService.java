@@ -43,7 +43,7 @@ public class LoginService {
                     db.closeConnection(true);
                 }
                 else {
-                    return new LoginResponse("Incorrect password. Please try again.", false);
+                    return new LoginResponse("error: incorrect password", false);
                 }
             }
         } catch (DataAccessException ex) {
@@ -51,8 +51,7 @@ public class LoginService {
             throw ex;
         }
         if (user == null) {
-            // error
-            return new LoginResponse("Unable to find user " + userName, false);
+            return new LoginResponse("error: incorrect username", false);
         }
         else {
             return new LoginResponse(authToken.getAuthToken(), user.getUserName(), user.getPersonID());

@@ -5,17 +5,17 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import exception.DataAccessException;
 import familymap.AuthToken;
-import familymap.Event;
+import familymap.Person;
 import response.DataResponse;
 import response.Response;
 import serializer.JsonSerializer;
 import service.AuthorizeService;
-import service.EventService;
+import service.PersonService;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 
-public class EventHandler implements HttpHandler {
+public class PersonHandler implements HttpHandler {
 
 	@Override
 	public void handle(HttpExchange exchange) throws IOException {
@@ -28,13 +28,13 @@ public class EventHandler implements HttpHandler {
 				// If authorization service found auth token for that username, they are authorized
 				if (compareToken != null) {
 					String[] param = (exchange.getRequestURI().toString()).split("/");
-					EventService eventServ = new EventService();
+					PersonService personServ = new PersonService();
 					// User specified eventID
 					if (param.length > 2) {
 						String eventID = param[2];
-						Event response = eventServ.findByEventID(eventID);
+						Person response = personServ.findByPersonID(eventID);
 
-						// Check that event with ID is associated with user
+						// Check that person with ID is associated with user
 						String userName = compareToken.getUserName();
 						if (!userName.equals(response.getAssociatedUsername())) {
 							Response responseError = new Response("error: not authorized", false);
@@ -47,14 +47,14 @@ public class EventHandler implements HttpHandler {
 					// User did not specify, return all events by userName
 					else {
 						String userName = compareToken.getUserName();
-						Event[] events = eventServ.findByUsername(userName);
-						DataResponse response = new DataResponse(events);
+						Person[] persons = personServ.findByUsername(userName);
+						DataResponse response = new DataResponse(persons);
 
 						JsonSerializer.sendResponse(exchange, response);
 					}
 				}
 				else {
-					JsonSerializer.sendResponse(exchange, new Response("error: not authorize", false));
+					JsonSerializer.sendResponse(exchange, new Response("error: unauthorized", false));
 				}
 			} catch (DataAccessException ex) {
 				Response failRes = new Response("error: internal error", false);
@@ -62,7 +62,7 @@ public class EventHandler implements HttpHandler {
 			}
 		}
 		else {
-			JsonSerializer.sendResponse(exchange, new Response("error: wrong request type", false));
+			JsonSerializer.sendResponse(exchange, new Response("error: incorrect request method", false));
 		}
 	}
 }

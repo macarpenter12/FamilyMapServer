@@ -7,14 +7,13 @@ import exception.DataAccessException;
 import familymap.AuthToken;
 import request.RegisterRequest;
 import response.RegisterResponse;
+import response.Response;
 import serializer.JsonSerializer;
 import serializer.StringStream;
 import service.RegisterService;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
 
 public class RegisterHandler implements HttpHandler {
 
@@ -32,31 +31,19 @@ public class RegisterHandler implements HttpHandler {
 				RegisterService registerServ = new RegisterService();
 				RegisterResponse registerRes = registerServ.register(registerReq);
 
-				// Generate Authentication header with token and username
+				// Generate Authentication header with token
 				AuthToken authToken = new AuthToken(registerRes.getAuthToken(), registerRes.getUserName());
+				String token = authToken.getAuthToken();
 				Headers resHeaders = exchange.getResponseHeaders();
-				resHeaders.add("Authorization", JsonSerializer.serialize(authToken));
+				resHeaders.add("Authorization", JsonSerializer.serialize(token));
 
-				// Success (OK)
-				exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
-
-				// Serialize, populate, and return response
-				String respData = JsonSerializer.serialize(registerRes);
-				OutputStream respBody = exchange.getResponseBody();
-				StringStream.writeString(respData, respBody);
-				respBody.close();
+				JsonSerializer.sendResponse(exchange, registerRes);
 			} catch (DataAccessException ex) {
-				exchange.sendResponseHeaders(HttpURLConnection.HTTP_INTERNAL_ERROR, 0);
-
-				RegisterResponse failRes = new RegisterResponse(ex.getMessage(), false);
-				String failData = JsonSerializer.serialize(failRes);
-				OutputStream failBody = exchange.getResponseBody();
-				StringStream.writeString(failData, failBody);
-				failBody.close();
+				JsonSerializer.sendInternalErrorResponse(exchange, new Response("error: internal error", false));
 			}
 		}
 		else {
-			exchange.sendResponseHeaders(HttpURLConnection.HTTP_BAD_REQUEST, 0);
+			JsonSerializer.sendResponse(exchange, new Response("error: incorrect request method", false));
 		}
 	}
 }

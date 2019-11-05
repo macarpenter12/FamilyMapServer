@@ -79,7 +79,7 @@ public class Database {
                     "latitude float not null, " +
                     "longitude float not null, " +
                     "year int not null, " +
-                    "eventID text not null, " +
+                    "eventID text not null unique, " +
                     "associatedUsername text not null, " +
 //                    "primary key (eventID), " +
                     "foreign key (AssociatedUsername) references user_table(userName), " +

@@ -14,8 +14,6 @@ import service.LoginService;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
 
 public class LoginHandler implements HttpHandler {
 
@@ -30,37 +28,22 @@ public class LoginHandler implements HttpHandler {
 			LoginRequest loginReq = JsonSerializer.deserialize(reqData, LoginRequest.class);
 
 			try {
-				// Call service to access database
 				LoginService loginServ = new LoginService();
 				LoginResponse loginRes = loginServ.login(loginReq);
 
-				// Generate Authentication header with token and username
+				// Generate Authentication header with token
 				AuthToken authToken = new AuthToken(loginRes.getAuthToken(), loginRes.getUserName());
+				String token = authToken.getAuthToken();
 				Headers resHeaders = exchange.getResponseHeaders();
-				resHeaders.add("Authorization", JsonSerializer.serialize(authToken));
+				resHeaders.add("Authorization", JsonSerializer.serialize(token));
 
-				// Success (OK)
-				exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
-
-				// Serialize, populate, and return response
-				String respData = JsonSerializer.serialize(loginRes);
-				OutputStream respBody = exchange.getResponseBody();
-				StringStream.writeString(respData, respBody);
-				respBody.close();
+				JsonSerializer.sendResponse(exchange, loginRes);
 			} catch (DataAccessException ex) {
-				// Something went wrong on our end (INTERNAL ERROR)
-				exchange.sendResponseHeaders(HttpURLConnection.HTTP_INTERNAL_ERROR, 0);
-
-				// Send error body for Login request as JSON object
-				LoginResponse failRes = new LoginResponse(ex.getMessage(), false);
-				String failData = JsonSerializer.serialize(failRes);
-				OutputStream failBody = exchange.getResponseBody();
-				StringStream.writeString(failData, failBody);
-				failBody.close();
+				JsonSerializer.sendInternalErrorResponse(exchange, new Response("error: internal error", false));
 			}
 		}
 		else {
-			exchange.sendResponseHeaders(HttpURLConnection.HTTP_BAD_REQUEST, 0);
+			JsonSerializer.sendResponse(exchange, new Response("error: incorrect request method", false));
 		}
 	}
 }

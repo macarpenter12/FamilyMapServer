@@ -1,10 +1,9 @@
 package response;
 
 public class DataResponse extends Response {
-	private String[] data;
+	private Object[] data;
 
-	public DataResponse(String[] data) {
-		super(null, null);
+	public DataResponse(Object[] data) {
 		this.data = data;
 	}
 
@@ -12,11 +11,11 @@ public class DataResponse extends Response {
 		super(message, success);
 	}
 
-	public String[] getData() {
+	public Object[] getData() {
 		return data;
 	}
 
-	public void setData(String[] data) {
+	public void setData(Object[] data) {
 		this.data = data;
 	}
 }

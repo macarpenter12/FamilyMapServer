@@ -13,35 +13,45 @@ import java.util.ArrayList;
  */
 public class EventService {
 
-    /**
-     * @param eventID The json object to process.
-     * @return Returns the response as a json object.
-     */
-    public Event findByEventID(String eventID) throws DataAccessException {
-        Database db = new Database();
-        try {
-            EventDAO eDao = new EventDAO(db.openConnection());
-            Event event = eDao.find(eventID);
-            db.closeConnection(true);
-            return event;
-        } catch (DataAccessException ex) {
-            db.closeConnection(false);
-            throw ex;
-        }
-    }
+	/**
+	 * Searches database for one event given the EventID.
+	 *
+	 * @param eventID The ID to search for.
+	 * @return The event associated with the EventID provided.
+	 */
+	public Event findByEventID(String eventID) throws DataAccessException {
+		Database db = new Database();
+		try {
+			EventDAO eDao = new EventDAO(db.openConnection());
+			Event event = eDao.find(eventID);
 
-    public Event[] findByUsername(String userName) throws DataAccessException {
-        Database db = new Database();
-        try {
-            EventDAO eDao = new EventDAO(db.openConnection());
-            ArrayList<Event> eventsAL= eDao.findByUser(userName);
-            Event[] events = new Event[eventsAL.size()];
-            events = eventsAL.toArray(events);
-            db.closeConnection(true);
-            return events;
-        } catch (DataAccessException ex) {
-            db.closeConnection(false);
-            throw ex;
-        }
-    }
+			db.closeConnection(true);
+			return event;
+		} catch (DataAccessException ex) {
+			db.closeConnection(false);
+			throw ex;
+		}
+	}
+
+    /**
+     * Searches database for all events associated with the given userName.
+     *
+     * @param userName userName to search for.
+     * @return ALL events in the database associated with the userName given.
+     * @throws DataAccessException Error accessing data within the service/DAO class.
+     */
+	public Event[] findByUsername(String userName) throws DataAccessException {
+		Database db = new Database();
+		try {
+			EventDAO eDao = new EventDAO(db.openConnection());
+			ArrayList<Event> eventsAL = eDao.findByUser(userName);
+			Event[] events = new Event[eventsAL.size()];
+			events = eventsAL.toArray(events);
+			db.closeConnection(true);
+			return events;
+		} catch (DataAccessException ex) {
+			db.closeConnection(false);
+			throw ex;
+		}
+	}
 }

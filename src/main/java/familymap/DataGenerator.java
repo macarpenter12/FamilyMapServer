@@ -173,7 +173,7 @@ public class DataGenerator {
 
 		location = generateNearbyLocation(location.getCountry());
 		// Generate mother's birth year now so we can calculate marriage date. Save for later.
-		int motherBirthYear = (int) (personBirth.getYear() - (Math.random() * 36) - 14);
+		final int motherBirthYear = (int) (personBirth.getYear() - (Math.random() * 36) - 14);
 		// Marriage
 		city = location.getCity();
 		country = location.getCountry();
@@ -200,11 +200,11 @@ public class DataGenerator {
 		country = location.getCountry();
 		latitude = location.getLatitude();
 		longitude = location.getLongitude();
-		year = (int) (year + (Math.random() * (119 - (year - birthYear))) + 1);
+		int fatherDeathYear = (int) (year + (Math.random() * (119 - (year - birthYear))) + 1);
 		eventID = UUID.randomUUID().toString();
 
 		events.add(new Event("death", fatherID, city, country, latitude, longitude,
-				year, eventID, userName));
+				fatherDeathYear, eventID, userName));
 
 		// Generate mother's events
 		String motherID = mother.getPersonID();

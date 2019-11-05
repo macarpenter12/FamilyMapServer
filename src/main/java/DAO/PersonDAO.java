@@ -70,8 +70,6 @@ public class PersonDAO {
 				return person;
 			}
 		} catch (SQLException ex) {
-			System.out.println(ex.getMessage());
-			ex.printStackTrace();
 			throw new DataAccessException("Error occurred while finding person " + personID);
 		} finally {
 			if (rs != null) {
@@ -155,8 +153,6 @@ public class PersonDAO {
 			String sql = "DELETE FROM person_table";
 			stmt.executeUpdate(sql);
 		} catch (SQLException ex) {
-			System.out.println(ex.getMessage());
-			ex.printStackTrace();
 			throw new DataAccessException("SQL Error encountered while clearing person table");
 		}
 	}

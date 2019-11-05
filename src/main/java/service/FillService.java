@@ -75,6 +75,7 @@ public class FillService {
 
 					// Insert person into database
 					pDao.insert(person);
+					personsAdded++;
 
 					// Add parents to next generation.
 					nextGenList.add(persons[0]);
@@ -108,6 +109,9 @@ public class FillService {
 
 			db.closeConnection(true);
 		} catch (DataAccessException ex) {
+			db.closeConnection(false);
+			throw ex;
+		} catch (NullPointerException ex) {
 			db.closeConnection(false);
 			throw ex;
 		}

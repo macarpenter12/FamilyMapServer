@@ -15,7 +15,6 @@ public class Server {
 		try {
 			db.openConnection();
 			db.createTables();
-//			db.clearTables();
 			db.closeConnection(true);
 		} catch (DataAccessException ex) {
 			try {
@@ -27,7 +26,6 @@ public class Server {
 			System.out.println(ex.getMessage());
 			ex.printStackTrace();
 		}
-
 
 		Server server = new Server();
 		final int DEFAULT_PORT = 8080;
@@ -56,6 +54,6 @@ public class Server {
 		httpServ.createContext("/load", new LoadHandler());
 		httpServ.createContext("/fill", new FillHandler());
 		httpServ.createContext("/event", new EventHandler());
-
+		httpServ.createContext("/person", new PersonHandler());
 	}
 }

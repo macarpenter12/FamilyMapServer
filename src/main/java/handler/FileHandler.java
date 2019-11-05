@@ -3,6 +3,7 @@ package handler;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import serializer.JsonSerializer;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -31,16 +32,16 @@ public class FileHandler implements HttpHandler {
 					String errorHTML = "web/HTML/404.html";
 					file = new File(errorHTML);
 					exchange.sendResponseHeaders(HttpURLConnection.HTTP_NOT_FOUND, 0);
+					return;
 				}
-				else {
-					// Success (OK)
-					exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
-				}
+				// Success (OK)
+				exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
 
 				// Populate response body
 				OutputStream respBody = exchange.getResponseBody();
 				Files.copy(file.toPath(), respBody);
 				respBody.close();
+				exchange.close();
 			}
 			// Not a GET request (BAD REQUEST)
 			else {
@@ -49,6 +50,7 @@ public class FileHandler implements HttpHandler {
 		} catch (IOException ex) {
 			exchange.sendResponseHeaders(HttpURLConnection.HTTP_INTERNAL_ERROR, 0);
 			exchange.getResponseBody().close();
+			exchange.close();
 			ex.printStackTrace();
 			throw ex;
 		}

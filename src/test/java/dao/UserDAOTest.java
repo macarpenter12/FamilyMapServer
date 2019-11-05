@@ -30,6 +30,7 @@ public class UserDAOTest {
     @AfterEach
     public void tearDown() throws Exception {
         db.openConnection();
+        db.createTables();
         db.clearTables();
         db.closeConnection(true);
     }
@@ -157,10 +158,13 @@ public class UserDAOTest {
             compareUser1 = uDao.find(testUser.getUserName());
             uDao.clearTable();
             compareUser2 = uDao.find(testUser.getUserName());
+            db.closeConnection(true);
 
             String sql = "DROP TABLE IF EXISTS user_table";
             Statement stmt = db.getConnection().createStatement();
             stmt.executeUpdate(sql);
+            db.closeConnection(true);
+            uDao = new UserDAO(db.openConnection());
             uDao.clearTable();
 
             db.closeConnection(true);

@@ -27,6 +27,9 @@ public class LoadService {
 
 		Database db = new Database();
 		try {
+			// Clear all data from the database
+			new ClearService().clear();
+
 			// Insert each type of data to database, committing changes after each type
 			UserDAO uDao = new UserDAO(db.openConnection());
 			for (int i = 0; i < users.length; ++i) {

@@ -4,16 +4,67 @@
     <option name="ANALYZE_TEST_SOURCES" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61cc7db2-aad8-4be3-b3a5-0ae18874fa63" name="Default Changelist" comment="Added service classes. Wrote EventDAO, ready for unit tests.">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+    <list default="true" id="61cc7db2-aad8-4be3-b3a5-0ae18874fa63" name="Default Changelist" comment="All API handlers except Person have been implemented">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/handler/PersonHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/service/AuthorizeServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/service/ClearServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/service/EventServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/service/FillServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/service/LoadServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/service/LoginServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/service/PersonServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/service/RegisterServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/img/background.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/familymap.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/familymap.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/RegisterUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RegisterUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/EventDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/EventDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/PersonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/PersonDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/familymap/DataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/familymap/DataGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handler/ClearHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/ClearHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handler/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/EventHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handler/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handler/FillHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/FillHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handler/LoadHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/LoadHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handler/LoginHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/LoginHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handler/RegisterHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/RegisterHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/response/DataResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/response/DataResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/serializer/JsonSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serializer/JsonSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/AuthorizeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/AuthorizeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/EventService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/FillService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/FillService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/LoadService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/LoadService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/PersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/PersonService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RegisterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dao/EventDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dao/EventDAOTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/dao/PersonDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dao/PersonDAOTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/dao/UserDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dao/UserDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service/ClearHandlerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service/FileHandlerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/AuthTokenDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/AuthTokenDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/EventDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/EventDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/PersonDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/PersonDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/UserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/familymap/Event.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/familymap/Event.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/familymap/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/familymap/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/familymap/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/familymap/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/AuthToken.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/ClearService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/ClearService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/EventService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/EventService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/FillService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/FillService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/LoadService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/LoadService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/LoginService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/PersonService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/PersonService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/RegisterUserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/dao/EventDAOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/dao/EventDAOTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/dao/PersonDAOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/dao/PersonDAOTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/dao/UserDAOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/dao/UserDAOTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/main.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -89,10 +140,10 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -113,13 +164,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UserDAOTest">
+  <component name="RunManager" selected="Application.Server">
     <configuration name="Server" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="server.Server" />
       <module name="FamilyMapServer" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="server.*" />
+          <option name="PATTERN" value="familymap.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -127,78 +178,69 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EventDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in FamilyMapServer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FamilyMapServer" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClearServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FamilyMapServer" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dao.*" />
+          <option name="PATTERN" value="service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="dao" />
-      <option name="MAIN_CLASS_NAME" value="dao.EventDAOTest" />
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.ClearServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EventDAOTest.insertFail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FamilyMapServer" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dao.*" />
+          <option name="PATTERN" value="service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="dao" />
-      <option name="MAIN_CLASS_NAME" value="dao.EventDAOTest" />
-      <option name="METHOD_NAME" value="insertFail" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PersonDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FamilyMapServer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="dao" />
-      <option name="MAIN_CLASS_NAME" value="dao.PersonDAOTest" />
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.LoginServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PersonDAOTest.insertPass" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PersonServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FamilyMapServer" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dao.*" />
+          <option name="PATTERN" value="service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="dao" />
-      <option name="MAIN_CLASS_NAME" value="dao.PersonDAOTest" />
-      <option name="METHOD_NAME" value="insertPass" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.PersonServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RegisterServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FamilyMapServer" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dao.*" />
+          <option name="PATTERN" value="service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="dao" />
-      <option name="MAIN_CLASS_NAME" value="dao.UserDAOTest" />
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.RegisterServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -206,11 +248,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserDAOTest" />
-        <item itemvalue="JUnit.PersonDAOTest" />
-        <item itemvalue="JUnit.EventDAOTest" />
-        <item itemvalue="JUnit.PersonDAOTest.insertPass" />
-        <item itemvalue="JUnit.EventDAOTest.insertFail" />
+        <item itemvalue="JUnit.All in FamilyMapServer" />
+        <item itemvalue="JUnit.ClearServiceTest" />
+        <item itemvalue="JUnit.RegisterServiceTest" />
+        <item itemvalue="JUnit.PersonServiceTest" />
+        <item itemvalue="JUnit.LoginServiceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -241,7 +283,26 @@
       <workItem from="1571434202012" duration="18000" />
       <workItem from="1571434552610" duration="3013000" />
       <workItem from="1571512775478" duration="3484000" />
-      <workItem from="1571679889778" duration="548000" />
+      <workItem from="1571679889778" duration="693000" />
+      <workItem from="1571694436684" duration="47000" />
+      <workItem from="1571699988510" duration="8157000" />
+      <workItem from="1571751732648" duration="9227000" />
+      <workItem from="1571872651028" duration="3327000" />
+      <workItem from="1571925714653" duration="192000" />
+      <workItem from="1571928328227" duration="1283000" />
+      <workItem from="1572021418853" duration="12000" />
+      <workItem from="1572031748361" duration="93000" />
+      <workItem from="1572033240974" duration="225000" />
+      <workItem from="1572043187588" duration="100000" />
+      <workItem from="1572046749457" duration="7318000" />
+      <workItem from="1572060256798" duration="4731000" />
+      <workItem from="1572125445383" duration="6899000" />
+      <workItem from="1572711938589" duration="37592000" />
+      <workItem from="1572769587551" duration="8710000" />
+      <workItem from="1572823815715" duration="14162000" />
+      <workItem from="1572893033214" duration="26540000" />
+      <workItem from="1572964001387" duration="4910000" />
+      <workItem from="1572984909024" duration="821000" />
     </task>
     <task id="LOCAL-00001" summary="Added Server class">
       <created>1570747584104</created>
@@ -278,7 +339,28 @@
       <option name="project" value="LOCAL" />
       <updated>1571431786711</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="File Handler is complete, serves homepage correctly.">
+      <created>1571874123097</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1571874123097</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Began work on Response class. Might rename to Result as shown in spec?">
+      <created>1572031826606</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1572031826606</updated>
+    </task>
+    <task id="LOCAL-00008" summary="All API handlers except Person have been implemented">
+      <created>1572893417740</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1572893417740</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,6 +387,21 @@
     <MESSAGE value="Added service classes. Wrote EventDAO, ready for unit tests." />
     <MESSAGE value="EventDAO and EventDAOTest are done. Now must implement PersonDAO and UserDao, along with unit tests." />
     <MESSAGE value="Finished DAO classes and all JUnit test cases." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished DAO classes and all JUnit test cases." />
+    <MESSAGE value="File Handler is complete, serves homepage correctly." />
+    <MESSAGE value="Began work on Response class. Might rename to Result as shown in spec?" />
+    <MESSAGE value="All API handlers except Person have been implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="All API handlers except Person have been implemented" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="year - motherBirthYear" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/FamilyMapServer$Server.ic" NAME="Server Coverage Results" MODIFIED="1572913177293" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>familymap.*</FILTER>
+    </SUITE>
   </component>
 </project>
