@@ -1,9 +1,9 @@
 package handler;
 
-import exception.DataAccessException;
-import response.ClearResponse;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import exception.DataAccessException;
+import response.ClearResponse;
 import response.Response;
 import serializer.JsonSerializer;
 import service.ClearService;

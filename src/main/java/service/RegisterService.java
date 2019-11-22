@@ -3,7 +3,6 @@ package service;
 import DAO.Database;
 import DAO.PersonDAO;
 import DAO.UserDAO;
-import com.google.gson.Gson;
 import exception.DataAccessException;
 import familymap.Person;
 import familymap.User;

@@ -5,7 +5,6 @@ import DAO.EventDAO;
 import DAO.PersonDAO;
 import DAO.UserDAO;
 import exception.DataAccessException;
-import familymap.DataGenerator;
 import familymap.Event;
 import familymap.Person;
 import familymap.User;

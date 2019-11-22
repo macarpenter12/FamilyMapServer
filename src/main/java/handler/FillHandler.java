@@ -6,12 +6,9 @@ import exception.DataAccessException;
 import response.FillResponse;
 import response.Response;
 import serializer.JsonSerializer;
-import serializer.StringStream;
 import service.FillService;
 
 import java.io.IOException;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
 
 public class FillHandler implements HttpHandler {
 

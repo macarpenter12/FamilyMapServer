@@ -8,7 +8,8 @@ import request.LoginRequest;
 import request.RegisterRequest;
 import response.LoginResponse;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class LoginServiceTest {
 	private final String REGISTERED_USERNAME = "username";

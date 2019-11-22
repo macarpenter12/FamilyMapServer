@@ -13,7 +13,8 @@ import response.RegisterResponse;
 
 import java.io.FileReader;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class LoadServiceTest {
 	private final String LOAD_PERSONID = "Sheila_Parker";

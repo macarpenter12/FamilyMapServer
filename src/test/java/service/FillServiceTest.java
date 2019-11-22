@@ -1,15 +1,14 @@
 package service;
 
 import DAO.Database;
-import exception.DataAccessException;
 import familymap.Person;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import request.RegisterRequest;
-import response.FillResponse;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FillServiceTest {
 	private Database db;
